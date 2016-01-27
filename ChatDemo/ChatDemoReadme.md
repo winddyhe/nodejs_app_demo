@@ -1,2 +1,2 @@
 # ChatDemo
-* 使用nodejs + HTML5的一个简易的web聊天工具。
+* 涓�涓娇鐢∟odejs + HTML5 + angular + WeUI + Websocket鐨凞emo

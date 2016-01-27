@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-han">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>简易聊天室</title>
+        <link rel="stylesheet" href="bower_components/weui/dist/style/weui.min.css"/>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
+        <script src="scripts/angular/app.js"></script>
+        <script src="scripts/angular/controllers.js"></script>
+    </head>
+    <body ng-app="AppModule1">
+        <div ng-controller="UserController">
+        <div class="weui_cells_title">填写个人信息：</div>
+        <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+                <label class="weui_label">姓名： </label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input ng-model="user.name" class="weui_input" type="tel" placeholder="请输入姓名">
+            </div>
+        </div>
+        
+        <div>
+            <a ng-click="user.confirm()" class="weui_btn weui_btn_mini weui_btn_primary">确认</a>
+            <a ng-click="user.reset()" class="weui_btn weui_btn_mini weui_btn_default">重置</a>
+        </div>
+        </div>
+        </div>
+        
+        <div class="weui_cells_title">声音播放：</div>
+        <div ng-controller="PlayerController">
+            <a ng-click="player.play()" ng-readonly="!player.playing" class="weui_btn weui_btn_mini weui_btn_primary">Play</a>
+            <a ng-click="player.stop()" ng-readonly="player.playing" class="weui_btn weui_btn_mini weui_btn_default">Stop</a>
+        </div>
+        
+        <div ng-controller="DataBindController">
+        <div class="weui_cells_title">数据绑定：</div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+                <label class="weui_label">姓名： </label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input ng-model="person.name" class="weui_input" type="tel" placeholder="请输入姓名">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>Hello {{ person.name }}</p>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>{{ clock }}</p>
+            </div>
+        </div>
+        
+        <div class="weui_cells_title">加1小游戏：</div>
+        <a ng-click="add(1)" class="weui_btn weui_btn_mini weui_btn_primary">Add</a>
+        <a ng-click="sub(1)" class="weui_btn weui_btn_mini weui_btn_default">Sub</a>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>Current count: {{ counter }}</p>
+            </div>
+        </div>
+        
+        <div class="weui_cells_title">AJax Demo：</div>
+        <a ng-click="GetAllArticles()" class="weui_btn weui_btn_mini weui_btn_primary">获取所有文章</a>
+        <a ng-click="ClearAllArticles()" class="weui_btn weui_btn_mini weui_btn_primary">清除所有文章</a>
+        <div ng-repeat="program in programs" class="weui_cell">
+            <!--<div class="weui_cell_bd weui_cell_primary">
+                <p>Story: {{ program.title.$text }}</p>
+            </div>
+            <a ng-click="play(program)" ng-model="program" class="weui_btn weui_btn_mini weui_btn_primary">打开</a>-->
+            <span npr-link play='play(program)' ng-model="<pro></pro>gram"></span>
+        </div>
+        </div>
+        
+    </body>
+</html>
