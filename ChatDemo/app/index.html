@@ -57,6 +57,7 @@
             </div>
         </div>
         
+        
         <div class="weui_cells_title">加1小游戏：</div>
         <a ng-click="add(1)" class="weui_btn weui_btn_mini weui_btn_primary">Add</a>
         <a ng-click="sub(1)" class="weui_btn weui_btn_mini weui_btn_default">Sub</a>
@@ -65,18 +66,42 @@
                 <p>Current count: {{ counter }}</p>
             </div>
         </div>
+        </div>
         
+        <div ng-controller="PlayerController">
         <div class="weui_cells_title">AJax Demo：</div>
         <a ng-click="GetAllArticles()" class="weui_btn weui_btn_mini weui_btn_primary">获取所有文章</a>
         <a ng-click="ClearAllArticles()" class="weui_btn weui_btn_mini weui_btn_primary">清除所有文章</a>
-        <div ng-repeat="program in programs" class="weui_cell">
-            <!--<div class="weui_cell_bd weui_cell_primary">
-                <p>Story: {{ program.title.$text }}</p>
+        
+        <div class="weui_cells_title">新闻的问题：</div>
+        <div ng-controller="RelatedController">
+        <div class="weui_cell" ng-repeat="s in related">
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p><a href="{{ s.link }}">{{ s.caption }}</a></p>
             </div>
-            <a ng-click="play(program)" ng-model="program" class="weui_btn weui_btn_mini weui_btn_primary">打开</a>-->
-            <span npr-link play='play(program)' ng-model="<pro></pro>gram"></span>
+        </div>
+        </div>
+        <div class="weui_cells_title">所有的新闻：</div>
+        <div ng-repeat="program in programs" class="weui_cell">
+            <span npr-link player='player' ng-model="program"></span>
         </div>
         </div>
         
+        <div ng-controller="ServiceController">
+        <div class="weui_cells_title">Service Demo：</div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+                <label class="weui_label"><p>用户: </p></label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input ng-model="username" class="weui_input" type="text" placeholder="Enter a GitHub username, like auser">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p ng-show="username">{{ events }}</p>
+            </div>
+        </div>
+        </div>
     </body>
 </html>

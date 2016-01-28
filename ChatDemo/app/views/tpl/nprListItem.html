@@ -1,14 +1,8 @@
-<div class="nprLink row" ng-click="play(ngModel)">
-   <span class="name large-8 columns">
-     <button class="large-2 small-2 playButton columns"><div class="triangle"></div></button>
-     <div class="large-10 small-10 columns">
-       <div class="row">
-         <span class="large-12">{{ ngModel.title.$text }}</span>
-       </div>
-       <div class="row">
-         <div class="small-1 columns"></div>
-         <div class="small-2 columns push-8"><a href="{{ ngModel.link[0].$text }}">Link</a></div>
-       </div>
-     </div>
-   </span>
- </div>
+<div class="nprLink row" player="player" ng-click="player.play(ngModel)">
+    <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>{{ ngModel.title.$text }}</p>
+        </div>
+        <a href="{{ ngModel.link[0].$text }}" class="weui_btn weui_btn_mini weui_btn_default">Link</a>
+    </div>
+</div>
