@@ -26,6 +26,7 @@ build/Release
 # Dependency directory
 node_modules
 ChatDemo/app/bower_components
+Polls/app/bower_components
 typings
 
 # Optional npm cache directory

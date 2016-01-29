@@ -1,0 +1,12 @@
+{
+    "name": "ChatDemo",
+    "version": "0.0.0",
+    "dependencies": {
+        "angular": "~1.4.9",
+        "angular-route": "~1.4.9",
+        "weui": "~0.3.0"
+    },
+    "devDependencies": {
+        
+    }
+}
