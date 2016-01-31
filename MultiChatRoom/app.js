@@ -3,11 +3,11 @@ var path = require('path');
 var ejs = require('ejs');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var methodOverride = require('method-override');
 var socketIO = require('socket.io');
 var app = express();
-var server = require('http').createServer(app);
+//var server = require('http').createServer(app);
 
 app.set('port', process.env.PORT || 3000);
 
@@ -38,15 +38,22 @@ if (app.get('dev') === 'development')
     });
 }
 
-var io = socketIO.listen(app.listen(app.get('port')));
- 
-io.sockets.on('connection', function(socket){
-   socket.emit('connected'); 
+var server = app.listen(app.get('port'), function(){
+    console.log('MultiChatRoom is on port ' + app.get('port') + '!');
 });
+var io = socketIO.listen(server);
 
+var messages = [];
 
-// server.listen(app.get('port'), function(){
-//     console.log('Express server listening on port ' + app.get('port') + '.');
-// });
+// 全局见Sockect消息的监听
+io.sockets.on('connection', function(socket){
+   socket.on('messages.read', function(){
+       socket.emit('messages.read', messages);
+   });
+   socket.on('messages.create', function(message){
+      messages.push(message);
+      io.sockets.emit('messages.add', message); 
+   });
+});
 
 module.exports = app;
