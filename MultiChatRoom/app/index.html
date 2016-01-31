@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-han">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <title>多人聊天室</title>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/controllers.js"></script>
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+            var socket = io.connect('http://localhost:3000');
+            socket.on('connected', function(){
+                alert('connected to 多人聊天室!');
+            });
+        </script>
+    </body>
+</html>
