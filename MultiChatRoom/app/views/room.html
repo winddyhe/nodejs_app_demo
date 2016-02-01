@@ -1,0 +1,18 @@
+<div class="col-md-12">
+    <div class="panel panel-default room">
+        <div class="panel-heading room-header">聊天室</div>
+        <div class="panel-body room-content">
+            <div class="list-group messages" auto-scroll-to-bottom>
+                <div class="list-group-item message" ng-repeat="message in messages">
+                    <!--<img ng-src="{{message.creator.avatarUrl}}" title="{{message.creator.name}}" class="img-rounded"/>{{message.creator.name}}: {{message.content}}<time am-time-ago="message.createAt"></time>-->
+                    某某：{{ message }}
+                </div>
+            </div>
+            <form ng-controller="MessageCreatorController" class="message-creator">
+                <div class="form-group">
+                    <textarea class="form-control message-input" ng-model="newMessage" ctrl-enter-break-line="createMessage()" placeholder="Ctrl to quick send"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

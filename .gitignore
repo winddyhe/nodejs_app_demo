@@ -29,6 +29,8 @@ ChatDemo/app/bower_components
 MultiChatRoom/app/bower_components
 Polls/app/bower_components
 typings
+mongodb-win32-i386-2.0.4
+Robomongo-0.8.5-i386
 
 # Optional npm cache directory
 .npm

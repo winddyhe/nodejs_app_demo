@@ -9,11 +9,16 @@
   <link rel="stylesheet" href="styles/room.css">
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-route/angular-route.min.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 
-  <script src="scripts/controllers/controllers.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/services/socket.js"></script>
+  <script src="scripts/directives/auto-scroll-to-bottom.js"></script>
+  <script src="scripts/directives/ctrl-enter-break-line.js"></script>
+  <script src="scripts/controllers/room.js"></script>
+  <script src="scripts/controllers/message-creator.js"></script>
 </head>
 
 <body ng-app="ChatRoomApp">
@@ -22,27 +27,17 @@
       <div class="navbar-header">
         <a href="#" class="navbar-brand">多人聊天室</a>
       </div>
+      <nav class="collapse navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav navbar-right" ng-show="me">
+          <li>
+            <img ng-src="{{ me.avatarUrl }}" title="{{ me.name }}" class="img-rounded">
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
   <div class="container" style="margin-top:100px;">
-    <div class="col-md-12">
-      <div class="panel panel-default room" ng-controller="RoomController">
-        <div class="panel-heading room-header">聊天室</div>
-        <div class="panel-body room-content">
-          <div class="list-group messages" auto-scroll-to-bottom>
-            <div class="list-group-item message" ng-repeat="message in messages track by $index">
-              某某：{{ message }}
-            </div>
-          </div>
-          <form class="message-creator" ng-controller="MessageCreatorController">
-            <div class="form-group">
-              <textarea required class="form-control message-input" ng-model="newMessage" ctrl-enter-break-line="createMessage()" placeholder="Ctrl+Enter to quick send">
-              </textarea>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    <div class="row" ng-view></div>
   </div>
 </body>
 
